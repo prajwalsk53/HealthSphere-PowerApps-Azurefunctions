@@ -1,0 +1,181 @@
+{
+  "version": "1.0",
+  "appId": "4c5a5890-d5f6-4175-9b0b-4f1db36a0776",
+  "appDisplayName": "Healthsphere",
+  "region": "prod",
+  "appType": "CodeApp",
+  "environmentId": "8a9d549e-546c-e8e4-aea1-809910128edc",
+  "description": " ",
+  "buildPath": "./dist",
+  "buildEntryPoint": "index.html",
+  "localAppUrl": "http://localhost:3000",
+  "logoPath": "Default",
+  "connectionReferences": {},
+  "databaseReferences": {
+    "default.cds": {
+      "dataSources": {
+        "user": {
+          "entitySetName": "hs_users",
+          "logicalName": "hs_user",
+          "isHidden": false
+        },
+        "allergies": {
+          "entitySetName": "hs_allergies",
+          "logicalName": "hs_allergy",
+          "isHidden": false
+        },
+        "appointments": {
+          "entitySetName": "hs_appointments",
+          "logicalName": "hs_appointment",
+          "isHidden": false
+        },
+        "dietpreferences": {
+          "entitySetName": "hs_dietpreferences",
+          "logicalName": "hs_dietpreference",
+          "isHidden": false
+        },
+        "doctors": {
+          "entitySetName": "hs_doctors",
+          "logicalName": "hs_doctor",
+          "isHidden": false
+        },
+        "foodintolerances": {
+          "entitySetName": "hs_foodintolerances",
+          "logicalName": "hs_foodintolerance",
+          "isHidden": false
+        },
+        "ingredientdislikes": {
+          "entitySetName": "hs_ingredientdislikes",
+          "logicalName": "hs_ingredientdislike",
+          "isHidden": false
+        },
+        "medicalrecords": {
+          "entitySetName": "hs_medicalrecords",
+          "logicalName": "hs_medicalrecord",
+          "isHidden": false
+        },
+        "prescriptions": {
+          "entitySetName": "hs_prescriptions",
+          "logicalName": "hs_prescription",
+          "isHidden": false
+        },
+        "prescriptionorders": {
+          "entitySetName": "hs_prescriptionorders",
+          "logicalName": "hs_prescriptionorder",
+          "isHidden": false
+        },
+        "vaccinations": {
+          "entitySetName": "hs_vaccinations",
+          "logicalName": "hs_vaccination",
+          "isHidden": false
+        },
+        "healthmetrics": {
+          "entitySetName": "hs_healthmetrics",
+          "logicalName": "hs_healthmetric",
+          "isHidden": false
+        },
+        "wearabletokens": {
+          "entitySetName": "hs_wearabletokens",
+          "logicalName": "hs_wearabletoken",
+          "isHidden": false
+        },
+        "googlefitdriveimports": {
+          "entitySetName": "hs_googlefitdriveimports",
+          "logicalName": "hs_googlefitdriveimport",
+          "isHidden": false
+        },
+        "dietlogs": {
+          "entitySetName": "hs_dietlogs",
+          "logicalName": "hs_dietlog",
+          "isHidden": false
+        },
+        "exerciselogs": {
+          "entitySetName": "hs_exerciselogs",
+          "logicalName": "hs_exerciselog",
+          "isHidden": false
+        },
+        "waterlogs": {
+          "entitySetName": "hs_waterlogs",
+          "logicalName": "hs_waterlog",
+          "isHidden": false
+        },
+        "payments": {
+          "entitySetName": "hs_payments",
+          "logicalName": "hs_payment",
+          "isHidden": false
+        },
+        "messages": {
+          "entitySetName": "hs_messages",
+          "logicalName": "hs_message",
+          "isHidden": false
+        },
+        "notifications": {
+          "entitySetName": "hs_notifications",
+          "logicalName": "hs_notification",
+          "isHidden": false
+        },
+        "clinicalnotes": {
+          "entitySetName": "hs_clinicalnotes",
+          "logicalName": "hs_clinicalnote",
+          "isHidden": false
+        },
+        "familyhistories": {
+          "entitySetName": "hs_familyhistories",
+          "logicalName": "hs_familyhistory",
+          "isHidden": false
+        },
+        "patientquestionnaires": {
+          "entitySetName": "hs_patientquestionnaires",
+          "logicalName": "hs_patientquestionnaire",
+          "isHidden": false
+        },
+        "questionnaireanswers": {
+          "entitySetName": "hs_questionnaireanswers",
+          "logicalName": "hs_questionnaireanswer",
+          "isHidden": false
+        },
+        "documents": {
+          "entitySetName": "hs_documents",
+          "logicalName": "hs_document",
+          "isHidden": false
+        },
+        "ingredientscans": {
+          "entitySetName": "hs_ingredientscans",
+          "logicalName": "hs_ingredientscan",
+          "isHidden": false
+        },
+        "accesslogs": {
+          "entitySetName": "hs_accesslogs",
+          "logicalName": "hs_accesslog",
+          "isHidden": false
+        },
+        "healthalerts": {
+          "entitySetName": "hs_healthalerts",
+          "logicalName": "hs_healthalert",
+          "isHidden": false
+        },
+        "publichealthalerts": {
+          "entitySetName": "hs_publichealthalerts",
+          "logicalName": "hs_publichealthalert",
+          "isHidden": false
+        },
+        "fooddatabases": {
+          "entitySetName": "hs_fooddatabases",
+          "logicalName": "hs_fooddatabase",
+          "isHidden": false
+        },
+        "geneticdiseases": {
+          "entitySetName": "hs_geneticdisease1s",
+          "logicalName": "hs_geneticdisease1",
+          "isHidden": false
+        },
+        "doctorschedules": {
+          "entitySetName": "hs_doctorschedule1s",
+          "logicalName": "hs_doctorschedule1",
+          "isHidden": false
+        }
+      },
+      "environmentVariableName": ""
+    }
+  }
+}

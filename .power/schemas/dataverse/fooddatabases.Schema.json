@@ -1,0 +1,557 @@
+{
+  "name": "hs_fooddatabase",
+  "title": "Food Databases",
+  "schema": {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "x-ms-dataverse-entity": true,
+      "x-ms-dataverse-entityset": "hs_fooddatabases",
+      "x-ms-dataverse-primary-id": "hs_fooddatabaseid",
+      "x-ms-dataverse-primary-name": "hs_foodname",
+      "properties": {
+        "createdby": {
+          "type": "string",
+          "title": "Created By",
+          "x-ms-dataverse-attribute": "createdby",
+          "x-ms-dataverse-type": "LookupType",
+          "x-ms-schema-name": "CreatedBy",
+          "x-ms-read-only": true
+        },
+        "createdbyname": {
+          "type": "string",
+          "title": "createdbyname",
+          "x-ms-dataverse-attribute": "createdbyname",
+          "x-ms-dataverse-type": "StringType",
+          "x-ms-schema-name": "CreatedByName",
+          "x-ms-read-only": true,
+          "maxLength": 100
+        },
+        "createdbyyominame": {
+          "type": "string",
+          "title": "createdbyyominame",
+          "x-ms-dataverse-attribute": "createdbyyominame",
+          "x-ms-dataverse-type": "StringType",
+          "x-ms-schema-name": "CreatedByYomiName",
+          "x-ms-read-only": true,
+          "required": true,
+          "maxLength": 100
+        },
+        "createdon": {
+          "type": "string",
+          "title": "Created On",
+          "x-ms-dataverse-attribute": "createdon",
+          "x-ms-dataverse-type": "DateTimeType",
+          "x-ms-schema-name": "CreatedOn",
+          "x-ms-read-only": true
+        },
+        "createdonbehalfby": {
+          "type": "string",
+          "title": "Created By (Delegate)",
+          "x-ms-dataverse-attribute": "createdonbehalfby",
+          "x-ms-dataverse-type": "LookupType",
+          "x-ms-schema-name": "CreatedOnBehalfBy",
+          "x-ms-read-only": true
+        },
+        "createdonbehalfbyname": {
+          "type": "string",
+          "title": "createdonbehalfbyname",
+          "x-ms-dataverse-attribute": "createdonbehalfbyname",
+          "x-ms-dataverse-type": "StringType",
+          "x-ms-schema-name": "CreatedOnBehalfByName",
+          "x-ms-read-only": true,
+          "maxLength": 100
+        },
+        "createdonbehalfbyyominame": {
+          "type": "string",
+          "title": "createdonbehalfbyyominame",
+          "x-ms-dataverse-attribute": "createdonbehalfbyyominame",
+          "x-ms-dataverse-type": "StringType",
+          "x-ms-schema-name": "CreatedOnBehalfByYomiName",
+          "x-ms-read-only": true,
+          "required": true,
+          "maxLength": 100
+        },
+        "hs_allergens": {
+          "type": "string",
+          "title": "Allergens",
+          "x-ms-dataverse-attribute": "hs_allergens",
+          "x-ms-dataverse-type": "MemoType",
+          "x-ms-schema-name": "hs_Allergens",
+          "maxLength": 100
+        },
+        "hs_avoidif": {
+          "type": "string",
+          "title": "Avoid If",
+          "x-ms-dataverse-attribute": "hs_avoidif",
+          "x-ms-dataverse-type": "MemoType",
+          "x-ms-schema-name": "hs_AvoidIf",
+          "maxLength": 100
+        },
+        "hs_calories": {
+          "type": "string",
+          "title": "Calories",
+          "x-ms-dataverse-attribute": "hs_calories",
+          "x-ms-dataverse-type": "IntegerType",
+          "x-ms-schema-name": "hs_Calories"
+        },
+        "hs_calories_1": {
+          "type": "string",
+          "title": "Calories_1",
+          "x-ms-dataverse-attribute": "hs_calories_1",
+          "x-ms-dataverse-type": "IntegerType",
+          "x-ms-schema-name": "hs_Calories_1"
+        },
+        "hs_carbs": {
+          "type": "string",
+          "title": "Carbs",
+          "x-ms-dataverse-attribute": "hs_carbs",
+          "x-ms-dataverse-type": "DecimalType",
+          "x-ms-schema-name": "hs_Carbs"
+        },
+        "hs_category": {
+          "type": "string",
+          "title": "Category",
+          "x-ms-dataverse-attribute": "hs_category",
+          "x-ms-dataverse-type": "PicklistType",
+          "x-ms-schema-name": "hs_Category",
+          "enum": [
+            "Fruit",
+            "Vegetable",
+            "Grain",
+            "Protein",
+            "Dairy"
+          ],
+          "x-ms-enum-values": [
+            123150000,
+            123150001,
+            123150002,
+            123150003,
+            123150004
+          ],
+          "Color": [
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "x-ms-optionsetmetadataid": "4ed1d14b-a86c-f111-ab0e-6045bdce35f9",
+          "x-ms-isGlobal": false,
+          "x-ms-optionsetdisplayname": "Category",
+          "x-ms-optionSetType": "Picklist"
+        },
+        "hs_category_1": {
+          "type": "string",
+          "title": "Category_1",
+          "x-ms-dataverse-attribute": "hs_category_1",
+          "x-ms-dataverse-type": "StringType",
+          "x-ms-schema-name": "hs_Category_1",
+          "maxLength": 100
+        },
+        "hs_categoryname": {
+          "type": "string",
+          "title": "hs_categoryname",
+          "x-ms-dataverse-attribute": "hs_categoryname",
+          "x-ms-dataverse-type": "VirtualType",
+          "x-ms-schema-name": "hs_categoryName",
+          "x-ms-read-only": true
+        },
+        "hs_fat": {
+          "type": "string",
+          "title": "Fat",
+          "x-ms-dataverse-attribute": "hs_fat",
+          "x-ms-dataverse-type": "DecimalType",
+          "x-ms-schema-name": "hs_Fat"
+        },
+        "hs_fiber": {
+          "type": "string",
+          "title": "Fiber",
+          "x-ms-dataverse-attribute": "hs_fiber",
+          "x-ms-dataverse-type": "DecimalType",
+          "x-ms-schema-name": "hs_Fiber"
+        },
+        "hs_fooddatabaseid": {
+          "type": "string",
+          "title": "Food Database",
+          "x-ms-dataverse-attribute": "hs_fooddatabaseid",
+          "x-ms-dataverse-type": "UniqueidentifierType",
+          "x-ms-schema-name": "hs_FoodDatabaseId",
+          "x-ms-dataverse-primary-id": true,
+          "required": true,
+          "x-ms-keyType": "primary"
+        },
+        "hs_foodname": {
+          "type": "string",
+          "title": "Food Name",
+          "x-ms-dataverse-attribute": "hs_foodname",
+          "x-ms-dataverse-type": "StringType",
+          "x-ms-schema-name": "hs_FoodName",
+          "x-ms-dataverse-primary-name": true,
+          "required": true,
+          "maxLength": 850
+        },
+        "hs_healthrating": {
+          "type": "string",
+          "title": "Health Rating",
+          "x-ms-dataverse-attribute": "hs_healthrating",
+          "x-ms-dataverse-type": "PicklistType",
+          "x-ms-schema-name": "hs_HealthRating",
+          "enum": [
+            "excellent",
+            "good",
+            "moderate",
+            "poor"
+          ],
+          "x-ms-enum-values": [
+            123150000,
+            123150001,
+            123150002,
+            123150003
+          ],
+          "Color": [
+            null,
+            null,
+            null,
+            null
+          ],
+          "x-ms-optionsetmetadataid": "54d1d14b-a86c-f111-ab0e-6045bdce35f9",
+          "x-ms-isGlobal": false,
+          "x-ms-optionsetdisplayname": "Health Rating",
+          "x-ms-optionSetType": "Picklist"
+        },
+        "hs_healthratingname": {
+          "type": "string",
+          "title": "hs_healthratingname",
+          "x-ms-dataverse-attribute": "hs_healthratingname",
+          "x-ms-dataverse-type": "VirtualType",
+          "x-ms-schema-name": "hs_healthratingName",
+          "x-ms-read-only": true
+        },
+        "hs_isvegan": {
+          "type": "string",
+          "title": "Is Vegan",
+          "x-ms-dataverse-attribute": "hs_isvegan",
+          "x-ms-dataverse-type": "BooleanType",
+          "x-ms-schema-name": "hs_IsVegan",
+          "enum": [
+            "True",
+            "False"
+          ],
+          "x-ms-enum-values": [
+            0,
+            1
+          ],
+          "Color": [
+            null,
+            null
+          ],
+          "x-ms-optionsetmetadataid": "51d1d14b-a86c-f111-ab0e-6045bdce35f9",
+          "x-ms-isGlobal": false,
+          "x-ms-optionsetdisplayname": "Is Vegan",
+          "x-ms-optionSetType": "Boolean"
+        },
+        "hs_isveganname": {
+          "type": "string",
+          "title": "hs_isveganname",
+          "x-ms-dataverse-attribute": "hs_isveganname",
+          "x-ms-dataverse-type": "VirtualType",
+          "x-ms-schema-name": "hs_isveganName",
+          "x-ms-read-only": true
+        },
+        "hs_name": {
+          "type": "string",
+          "title": "Name",
+          "x-ms-dataverse-attribute": "hs_name",
+          "x-ms-dataverse-type": "StringType",
+          "x-ms-schema-name": "hs_Name",
+          "required": true,
+          "maxLength": 100
+        },
+        "hs_portionsize": {
+          "type": "string",
+          "title": "Portion Size",
+          "x-ms-dataverse-attribute": "hs_portionsize",
+          "x-ms-dataverse-type": "StringType",
+          "x-ms-schema-name": "hs_PortionSize",
+          "maxLength": 100
+        },
+        "hs_protein": {
+          "type": "string",
+          "title": "Protein",
+          "x-ms-dataverse-attribute": "hs_protein",
+          "x-ms-dataverse-type": "DecimalType",
+          "x-ms-schema-name": "hs_Protein"
+        },
+        "hs_sodium": {
+          "type": "string",
+          "title": "Sodium",
+          "x-ms-dataverse-attribute": "hs_sodium",
+          "x-ms-dataverse-type": "DecimalType",
+          "x-ms-schema-name": "hs_Sodium"
+        },
+        "hs_sugar": {
+          "type": "string",
+          "title": "Sugar",
+          "x-ms-dataverse-attribute": "hs_sugar",
+          "x-ms-dataverse-type": "DecimalType",
+          "x-ms-schema-name": "hs_Sugar"
+        },
+        "hs_vitamins": {
+          "type": "string",
+          "title": "Vitamins",
+          "x-ms-dataverse-attribute": "hs_vitamins",
+          "x-ms-dataverse-type": "MemoType",
+          "x-ms-schema-name": "hs_Vitamins",
+          "maxLength": 100
+        },
+        "importsequencenumber": {
+          "type": "string",
+          "title": "Import Sequence Number",
+          "x-ms-dataverse-attribute": "importsequencenumber",
+          "x-ms-dataverse-type": "IntegerType",
+          "x-ms-schema-name": "ImportSequenceNumber"
+        },
+        "modifiedby": {
+          "type": "string",
+          "title": "Modified By",
+          "x-ms-dataverse-attribute": "modifiedby",
+          "x-ms-dataverse-type": "LookupType",
+          "x-ms-schema-name": "ModifiedBy",
+          "x-ms-read-only": true
+        },
+        "modifiedbyname": {
+          "type": "string",
+          "title": "modifiedbyname",
+          "x-ms-dataverse-attribute": "modifiedbyname",
+          "x-ms-dataverse-type": "StringType",
+          "x-ms-schema-name": "ModifiedByName",
+          "x-ms-read-only": true,
+          "maxLength": 100
+        },
+        "modifiedbyyominame": {
+          "type": "string",
+          "title": "modifiedbyyominame",
+          "x-ms-dataverse-attribute": "modifiedbyyominame",
+          "x-ms-dataverse-type": "StringType",
+          "x-ms-schema-name": "ModifiedByYomiName",
+          "x-ms-read-only": true,
+          "required": true,
+          "maxLength": 100
+        },
+        "modifiedon": {
+          "type": "string",
+          "title": "Modified On",
+          "x-ms-dataverse-attribute": "modifiedon",
+          "x-ms-dataverse-type": "DateTimeType",
+          "x-ms-schema-name": "ModifiedOn",
+          "x-ms-read-only": true
+        },
+        "modifiedonbehalfby": {
+          "type": "string",
+          "title": "Modified By (Delegate)",
+          "x-ms-dataverse-attribute": "modifiedonbehalfby",
+          "x-ms-dataverse-type": "LookupType",
+          "x-ms-schema-name": "ModifiedOnBehalfBy",
+          "x-ms-read-only": true
+        },
+        "modifiedonbehalfbyname": {
+          "type": "string",
+          "title": "modifiedonbehalfbyname",
+          "x-ms-dataverse-attribute": "modifiedonbehalfbyname",
+          "x-ms-dataverse-type": "StringType",
+          "x-ms-schema-name": "ModifiedOnBehalfByName",
+          "x-ms-read-only": true,
+          "maxLength": 100
+        },
+        "modifiedonbehalfbyyominame": {
+          "type": "string",
+          "title": "modifiedonbehalfbyyominame",
+          "x-ms-dataverse-attribute": "modifiedonbehalfbyyominame",
+          "x-ms-dataverse-type": "StringType",
+          "x-ms-schema-name": "ModifiedOnBehalfByYomiName",
+          "x-ms-read-only": true,
+          "required": true,
+          "maxLength": 100
+        },
+        "overriddencreatedon": {
+          "type": "string",
+          "title": "Record Created On",
+          "x-ms-dataverse-attribute": "overriddencreatedon",
+          "x-ms-dataverse-type": "DateTimeType",
+          "x-ms-schema-name": "OverriddenCreatedOn"
+        },
+        "ownerid": {
+          "type": "string",
+          "title": "Owner",
+          "x-ms-dataverse-attribute": "ownerid",
+          "x-ms-dataverse-type": "OwnerType",
+          "x-ms-schema-name": "OwnerId",
+          "required": true
+        },
+        "owneridname": {
+          "type": "string",
+          "title": "owneridname",
+          "x-ms-dataverse-attribute": "owneridname",
+          "x-ms-dataverse-type": "StringType",
+          "x-ms-schema-name": "OwnerIdName",
+          "x-ms-read-only": true,
+          "required": true,
+          "maxLength": 100
+        },
+        "owneridtype": {
+          "type": "string",
+          "title": "owneridtype",
+          "x-ms-dataverse-attribute": "owneridtype",
+          "x-ms-dataverse-type": "EntityNameType",
+          "x-ms-schema-name": "OwnerIdType",
+          "required": true
+        },
+        "owneridyominame": {
+          "type": "string",
+          "title": "owneridyominame",
+          "x-ms-dataverse-attribute": "owneridyominame",
+          "x-ms-dataverse-type": "StringType",
+          "x-ms-schema-name": "OwnerIdYomiName",
+          "x-ms-read-only": true,
+          "required": true,
+          "maxLength": 100
+        },
+        "owningbusinessunit": {
+          "type": "string",
+          "title": "Owning Business Unit",
+          "x-ms-dataverse-attribute": "owningbusinessunit",
+          "x-ms-dataverse-type": "LookupType",
+          "x-ms-schema-name": "OwningBusinessUnit",
+          "x-ms-read-only": true
+        },
+        "owningbusinessunitname": {
+          "type": "string",
+          "title": "owningbusinessunitname",
+          "x-ms-dataverse-attribute": "owningbusinessunitname",
+          "x-ms-dataverse-type": "StringType",
+          "x-ms-schema-name": "OwningBusinessUnitName",
+          "x-ms-read-only": true,
+          "required": true,
+          "maxLength": 100
+        },
+        "owningteam": {
+          "type": "string",
+          "title": "Owning Team",
+          "x-ms-dataverse-attribute": "owningteam",
+          "x-ms-dataverse-type": "LookupType",
+          "x-ms-schema-name": "OwningTeam",
+          "x-ms-read-only": true
+        },
+        "owninguser": {
+          "type": "string",
+          "title": "Owning User",
+          "x-ms-dataverse-attribute": "owninguser",
+          "x-ms-dataverse-type": "LookupType",
+          "x-ms-schema-name": "OwningUser",
+          "x-ms-read-only": true
+        },
+        "statecode": {
+          "type": "string",
+          "title": "Status",
+          "x-ms-dataverse-attribute": "statecode",
+          "x-ms-dataverse-type": "StateType",
+          "x-ms-schema-name": "statecode",
+          "required": true,
+          "enum": [
+            "Active",
+            "Inactive"
+          ],
+          "x-ms-enum-values": [
+            0,
+            1
+          ],
+          "Color": [
+            null,
+            null
+          ],
+          "x-ms-optionsetmetadataid": "3b295da2-a76c-f111-ab0d-e4fb1efef87b",
+          "x-ms-isGlobal": false,
+          "x-ms-optionsetdisplayname": "Status",
+          "x-ms-optionSetType": "State"
+        },
+        "statecodename": {
+          "type": "string",
+          "title": "statecodename",
+          "x-ms-dataverse-attribute": "statecodename",
+          "x-ms-dataverse-type": "VirtualType",
+          "x-ms-schema-name": "statecodeName",
+          "x-ms-read-only": true
+        },
+        "statuscode": {
+          "type": "string",
+          "title": "Status Reason",
+          "x-ms-dataverse-attribute": "statuscode",
+          "x-ms-dataverse-type": "StatusType",
+          "x-ms-schema-name": "statuscode",
+          "enum": [
+            "Active",
+            "Inactive"
+          ],
+          "x-ms-enum-values": [
+            1,
+            2
+          ],
+          "Color": [
+            null,
+            null
+          ],
+          "x-ms-optionsetmetadataid": "45295da2-a76c-f111-ab0d-e4fb1efef87b",
+          "x-ms-isGlobal": false,
+          "x-ms-optionsetdisplayname": "Status Reason",
+          "x-ms-optionSetType": "Status"
+        },
+        "statuscodename": {
+          "type": "string",
+          "title": "statuscodename",
+          "x-ms-dataverse-attribute": "statuscodename",
+          "x-ms-dataverse-type": "VirtualType",
+          "x-ms-schema-name": "statuscodeName",
+          "x-ms-read-only": true
+        },
+        "timezoneruleversionnumber": {
+          "type": "string",
+          "title": "Time Zone Rule Version Number",
+          "x-ms-dataverse-attribute": "timezoneruleversionnumber",
+          "x-ms-dataverse-type": "IntegerType",
+          "x-ms-schema-name": "TimeZoneRuleVersionNumber"
+        },
+        "utcconversiontimezonecode": {
+          "type": "string",
+          "title": "UTC Conversion Time Zone Code",
+          "x-ms-dataverse-attribute": "utcconversiontimezonecode",
+          "x-ms-dataverse-type": "IntegerType",
+          "x-ms-schema-name": "UTCConversionTimeZoneCode"
+        },
+        "versionnumber": {
+          "type": "string",
+          "title": "Version Number",
+          "x-ms-dataverse-attribute": "versionnumber",
+          "x-ms-dataverse-type": "BigIntType",
+          "x-ms-schema-name": "VersionNumber",
+          "x-ms-read-only": true
+        }
+      },
+      "required": [
+        "createdbyyominame",
+        "createdonbehalfbyyominame",
+        "hs_fooddatabaseid",
+        "hs_foodname",
+        "hs_name",
+        "modifiedbyyominame",
+        "modifiedonbehalfbyyominame",
+        "ownerid",
+        "owneridname",
+        "owneridtype",
+        "owneridyominame",
+        "owningbusinessunitname",
+        "statecode"
+      ]
+    }
+  }
+}
