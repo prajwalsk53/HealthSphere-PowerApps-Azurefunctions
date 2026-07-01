@@ -102,8 +102,13 @@ A deliberately thin Node.js Azure Functions app (`azure-bridge/`) that exists *o
 | `emailConfig` / `emailSend` | SMTP email sending via Nodemailer |
 | `paymentIntent` | Stripe PaymentIntent creation for prescription payments |
 | `wearableSync` | Downloads & parses Google Takeout health-data ZIPs from a shared Drive folder |
+| `dataverseLabResultWebhook` | **True Dataverse Webhook** — called by Dataverse itself (not the frontend) via the plugin pipeline when a lab result is saved with Critical status; resolves the patient's email via S2S Dataverse Web API call and sends `mailCriticalLabResult` automatically |
 
 All routes are unauthenticated at the HTTP layer (matching the original Stripe-route precedent) since the real auth boundary is the user's Microsoft Entra session inside the Power Apps player — the bridge never touches Dataverse directly; it only receives/returns plain JSON context.
+
+> The webhook endpoint is the exception — it is called by **Dataverse itself**, registered via the Plugin Registration Tool as a Service Endpoint step on `hs_medicalrecord` (Create + Update). It authenticates using a shared secret header (`x-webhook-key`) and calls back into Dataverse using an **Azure AD Application User** (client credentials / S2S OAuth) to resolve patient details. Full setup guide: [azure-bridge/docs/DATAVERSE-WEBHOOK.md](azure-bridge/docs/DATAVERSE-WEBHOOK.md)
+
+📄 **[Full Azure Functions implementation guide](azure-bridge/README.md)** — step-by-step build/deploy log covering project setup, the route map, why each function is built the way it is, and the full Azure deployment process.
 
 ---
 
@@ -189,6 +194,7 @@ Because Power Apps Code Apps enforce a strict Content-Security-Policy, the follo
 - **Typed data access everywhere** — every Dataverse table has a generated `Hs_<table>Model.ts` + `Hs_<table>Service.ts`, so all CRUD calls are type-checked against the live schema.
 - **Graceful AI degradation** — if the Gemini API key is missing/expired/rate-limited, `aiChat` transparently falls back to a comprehensive rule-based medical-guidance engine instead of failing, so the assistant is never fully "down."
 - **One-off idempotent demo-data seeding** (`/dev-seed` route) — populates a freshly-provisioned Dataverse environment with realistic demo accounts, appointments, prescriptions, and health metrics; safe to re-run.
+- **True Dataverse Webhook (not Power Automate)** — a `dataverseLabResultWebhook` Azure Function is registered in the Dataverse plugin execution pipeline via the Plugin Registration Tool as a Service Endpoint step. It fires synchronously/asynchronously on `hs_medicalrecord` Create/Update when `hs_status = Critical`, guaranteed regardless of which client wrote the row. The Function authenticates back into Dataverse via an **Azure AD App Registration + Application User** (S2S client credentials OAuth) to resolve the patient's email — the standard Dynamics 365 server-to-server integration pattern.
 
 ---
 
