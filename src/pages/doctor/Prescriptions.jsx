@@ -26,6 +26,7 @@ export default function DoctorPrescriptions() {
   const [showModal, setShowModal] = useState(false);
   const [form, setForm] = useState({ patient_id: '', medication_name: '', dosage: '', frequency: '', duration: '', start_date: new Date().toISOString().split('T')[0], end_date: '', instructions: '' });
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   const load = () => {
     Promise.all([
@@ -49,11 +50,17 @@ export default function DoctorPrescriptions() {
 
   useEffect(load, []);
 
+  const parseDataverseError = (err) => {
+    try { return JSON.parse(err?.message)?.error?.message || err?.message; }
+    catch { return err?.message || 'Failed to add prescription.'; }
+  };
+
   const submit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
+    setSubmitError(null);
     try {
-      await Hs_prescriptionsService.create({
+      const result = await Hs_prescriptionsService.create({
         'hs_Patient@odata.bind': `/hs_users(${form.patient_id})`,
         'hs_Doctor@odata.bind': `/hs_users(${user.id})`,
         hs_medicationname: form.medication_name,
@@ -64,9 +71,13 @@ export default function DoctorPrescriptions() {
         hs_enddate: form.end_date || undefined,
         hs_instructions: form.instructions || undefined,
       });
-      load(); setShowModal(false);
-    } catch (err) { alert(err.message || 'Failed'); }
-    finally { setSubmitting(false); }
+      if (!result.success) throw new Error(parseDataverseError(result.error));
+      load();
+      setShowModal(false);
+      setSubmitError(null);
+    } catch (err) {
+      setSubmitError(parseDataverseError(err));
+    } finally { setSubmitting(false); }
   };
 
   if (loading) return <div className="loading"><div className="spinner" /></div>;
@@ -75,7 +86,7 @@ export default function DoctorPrescriptions() {
     <div>
       <div className="flex-between mb-4">
         <div />
-        <button className="btn btn-primary" onClick={() => setShowModal(true)}>+ Issue Prescription</button>
+        <button className="btn btn-primary" onClick={() => { setShowModal(true); setSubmitError(null); }}>+ Issue Prescription</button>
       </div>
       <div className="card">
         <div className="card-header">
@@ -106,10 +117,13 @@ export default function DoctorPrescriptions() {
           <div className="modal" style={{ maxWidth: 580 }}>
             <div className="modal-header">
               <h3>Issue Prescription</h3>
-              <button className="modal-close" onClick={() => setShowModal(false)}>✕</button>
+              <button className="modal-close" onClick={() => { setShowModal(false); setSubmitError(null); }}>✕</button>
             </div>
             <form onSubmit={submit}>
               <div className="modal-body">
+                {submitError && (
+                  <div className="alert alert-danger mb-3">{submitError}</div>
+                )}
                 <div className="form-group">
                   <label className="form-label">Patient *</label>
                   <select className="form-control" required value={form.patient_id} onChange={e => setForm({...form, patient_id: e.target.value})}>

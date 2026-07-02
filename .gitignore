@@ -21,6 +21,7 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
+!Plugins/**/*.sln
 *.sw?
 
 # Environment / secrets
@@ -30,3 +31,5 @@ dist-ssr
 # Debug artifacts
 har-relevant.json
 *.har
+
+.fake

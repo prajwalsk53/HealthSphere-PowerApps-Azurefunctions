@@ -28,6 +28,15 @@ const PTABS = [
   ['notes', 'fa-notes-medical', 'Notes'],
 ];
 
+function extractDataverseError(err) {
+  try {
+    const parsed = JSON.parse(err?.message);
+    return parsed?.error?.message || err?.message;
+  } catch {
+    return err?.message || 'An error occurred.';
+  }
+}
+
 function timeAgo(dateStr) {
   if (!dateStr) return '';
   const diff = (Date.now() - new Date(dateStr).getTime()) / 1000;
@@ -62,6 +71,7 @@ export default function DoctorPatients() {
   const [rxForm, setRxForm] = useState({ medication_name: '', dosage: '', frequency: '', duration: '30', start_date: new Date().toISOString().split('T')[0], instructions: '' });
   const [rxSubmitting, setRxSubmitting] = useState(false);
   const [rxMsg, setRxMsg] = useState(null);
+  const [rxIsError, setRxIsError] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -216,11 +226,13 @@ export default function DoctorPatients() {
     e.preventDefault();
     if (!rxForm.medication_name || !rxForm.dosage || !rxForm.frequency) return;
     setRxSubmitting(true);
+    setRxMsg(null);
+    setRxIsError(false);
     try {
       const duration = parseInt(rxForm.duration, 10) || 30;
       const end = new Date(rxForm.start_date);
       end.setDate(end.getDate() + duration);
-      await Hs_prescriptionsService.create({
+      const result = await Hs_prescriptionsService.create({
         'hs_Patient@odata.bind': `/hs_users(${selected.id})`,
         'hs_Doctor@odata.bind': `/hs_users(${user.id})`,
         hs_medicationname: rxForm.medication_name,
@@ -231,12 +243,17 @@ export default function DoctorPatients() {
         hs_enddate: end.toISOString().split('T')[0],
         hs_instructions: rxForm.instructions || undefined,
       });
+      if (!result.success) {
+        throw new Error(extractDataverseError(result.error));
+      }
       await reloadDetails(selected.id);
       setRxForm({ medication_name: '', dosage: '', frequency: '', duration: '30', start_date: new Date().toISOString().split('T')[0], instructions: '' });
+      setRxIsError(false);
       setRxMsg(`Prescription for ${rxForm.medication_name} added successfully.`);
       setTab('rx');
     } catch (err) {
-      setRxMsg(err.message || 'Failed to add prescription.');
+      setRxIsError(true);
+      setRxMsg(extractDataverseError(err));
     } finally { setRxSubmitting(false); }
   };
 
@@ -525,7 +542,7 @@ export default function DoctorPatients() {
                 <div className="card mb-4">
                   <div className="card-header"><h3><i className="fas fa-prescription" style={{ color: '#7C3AED' }} /> Add Prescription</h3></div>
                   <div className="card-body">
-                    {rxMsg && <div className="alert alert-success mb-3">{rxMsg}</div>}
+                    {rxMsg && <div className={`alert ${rxIsError ? 'alert-danger' : 'alert-success'} mb-3`}>{rxMsg}</div>}
                     <form onSubmit={addPrescription}>
                       <div className="grid grid-2 gap-2">
                         <div className="form-group">
