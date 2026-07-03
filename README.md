@@ -3,7 +3,7 @@
 A full-featured, multi-role NHS healthcare platform built as a **Power Apps Code App**, backed by **Microsoft Dataverse** and a custom **Azure Functions** bridge for secret-bearing integrations (AI, email, payments, file storage). Originally an Express/Prisma/PostgreSQL application, fully re-architected onto the Power Platform.
 
 > 🔗 **Live app:** runs inside the Power Apps player (Microsoft Entra-authenticated environment)
-> 🏗 **Architecture:** React SPA (Code App) → Dataverse (data) + Azure Functions (secrets/3rd-party APIs)
+>  **Architecture:** React SPA (Code App) → Dataverse (data) + Azure Functions (secrets/3rd-party APIs)
 
 ---
 
